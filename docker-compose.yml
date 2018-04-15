@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports: 
+      - "8100:8100"
+      - "35729:35729"
+    privileged: true
+    volumes:
+      - .:/code
