@@ -8,8 +8,23 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestore } from 'angularfire2/firestore';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+
+export const environment = {
+  production: false,
+  firebase: {
+    projectId: 'commando-cub-test',
+    apiKey: 'AIzaSyDG5bmQLBp27v60VLv1YWk5Y9pkChc2VeI',
+    authDomain: 'commando-cub-test.firebaseapp.com',
+    databaseURL: 'https://commando-cub-test.firebaseio.com',
+    storageBucket: 'commando-cub-test.appspot.com',
+    messagingSenderId: '306564613918'
+  }
+};
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -23,6 +38,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -40,6 +56,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFirestore,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
