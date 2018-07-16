@@ -1,7 +1,19 @@
 {
-	"HOME": "Inicio",
-	"LOGIN": "Logarse",
-	"EMAIL": "Email",
-	"PASSWORD": "Contraseña",
-	"SUBMIT": "Enviar"
+	"MENU": {
+		"MENU": "Menú"
+	},
+	"HOME": {
+		"HOME": "Inicio",
+		"LOGIN": "Logarse",
+		"EMAIL": "Email",
+		"PASSWORD": "Contraseña",
+		"SUBMIT": "Enviar"
+	},
+	"SIGNUP": {
+		"OR": "ó",
+		"EMAIL": "EMAIL",
+		"PASSWORD": "CONTRASEÑA",
+		"SUBMIT": "ENVIAR",
+		"SIGNUP": "REGISTRARSE"
+	}
 }

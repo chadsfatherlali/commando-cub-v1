@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button [menuToggle]="activeMenu">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'SIGNUP.SIGNUP' | translate }}</ion-title>
+    </ion-navbar>      
+</ion-header>
+
+<ion-content padding text-center>
+    <img src="/assets/imgs/perro.svg"/>
+
+    <button ion-button color="light" block icon-end>
+        FACEBOOK
+        <ion-icon name="logo-facebook"></ion-icon>
+    </button>
+    <button ion-button color="light" block icon-end>
+        GOOGLE
+        <ion-icon name="logo-google"></ion-icon>
+    </button>
+
+    <div class="separator">{{ 'SIGNUP.OR' | translate }}</div>
+
+    <form>
+        <ion-item>
+            <ion-input type="email" placeholder="{{ 'SIGNUP.EMAIL' | translate }}"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="password" placeholder="{{ 'SIGNUP.PASSWORD' | translate }}"></ion-input>
+        </ion-item>
+
+        <button ion-button color="dark" block icon-end>
+            {{ 'SIGNUP.SUBMIT' | translate }}
+            <ion-icon name="paper-plane"></ion-icon>
+        </button>
+    </form>
+</ion-content>

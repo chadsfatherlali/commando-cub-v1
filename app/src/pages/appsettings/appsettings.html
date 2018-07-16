@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button [menuToggle]="activeMenu">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'SIGNUP.SIGNUP' | translate }}</ion-title>
+    </ion-navbar>      
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+        <ion-label>Idioma</ion-label>
+        <ion-select [(ngModel)]="language">
+            <ion-option [value]="es">Español</ion-option>
+            <ion-option [value]="en">Inglés</ion-option>
+        </ion-select>
+    </ion-item>
+</ion-content>

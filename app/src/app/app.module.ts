@@ -13,6 +13,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { SignUpPage } from '../pages/signup/signup';
+import { AppSettingsPage } from '../pages/appsettings/appsettings';
 
 export const environment = {
   production: false,
@@ -33,7 +35,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SignUpPage,
+    AppSettingsPage
   ],
   imports: [
     BrowserModule,
@@ -51,13 +55,18 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SignUpPage,
+    AppSettingsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AngularFirestore,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {
+      provide: ErrorHandler, 
+      useClass: IonicErrorHandler
+    }
   ]
 })
 export class AppModule {}
