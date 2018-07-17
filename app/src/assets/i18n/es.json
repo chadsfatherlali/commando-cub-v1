@@ -1,6 +1,9 @@
 {
 	"MENU": {
-		"MENU": "Menú"
+		"MENU": "Menú",
+		"SIGNIN": "Conectarse",
+		"APPSETTINGS": "Configuración de la App",
+		"LOGOUT": "Salir"
 	},
 	"HOME": {
 		"HOME": "Inicio",
@@ -13,7 +16,12 @@
 		"OR": "ó",
 		"EMAIL": "EMAIL",
 		"PASSWORD": "CONTRASEÑA",
-		"SUBMIT": "ENVIAR",
+		"SUBMIT": "REGISTRARSE",
 		"SIGNUP": "REGISTRARSE"
-	}
+	},
+	"APPSETTINGS": {
+        "LANGUAGE": "Idioma",
+        "SPANISH": "Español",
+        "ENGLISH": "Inglés"
+    }
 }

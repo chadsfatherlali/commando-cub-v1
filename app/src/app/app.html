@@ -6,11 +6,20 @@
     </ion-header>
     <ion-content>
         <ion-list>
-            <button ion-item icon-start menuClose (click)="menuNavigation(signUpPage)">
-                Sign Up
+            <button *ngIf="!userStatus" ion-item menuClose (click)="menuNavigation(signUpPage)">
+                <ion-icon name="key" item-start></ion-icon> 
+                {{ 'MENU.SIGNIN' | translate }}
             </button>
-            <button ion-item icon-start menuClose (click)="menuNavigation(appSettingsPage)">
-                App settings
+            <button ion-item menuClose (click)="menuNavigation(appSettingsPage)">
+                <ion-icon name="settings" item-start></ion-icon> 
+                {{ 'MENU.APPSETTINGS' | translate }}
+            </button>
+        </ion-list>
+
+        <ion-list *ngIf="userStatus">
+            <button ion-item menuClose icon-start (click)="logout()">
+                <ion-icon name="power" item-start></ion-icon> 
+                {{ 'MENU.LOGOUT' | translate }}
             </button>
         </ion-list>
     </ion-content>

@@ -9,10 +9,10 @@
 
 <ion-content padding>
     <ion-item>
-        <ion-label>Idioma</ion-label>
-        <ion-select [(ngModel)]="language">
-            <ion-option [value]="es">Español</ion-option>
-            <ion-option [value]="en">Inglés</ion-option>
+        <ion-label>{{ 'APPSETTINGS.LANGUAGE' | translate }}</ion-label>
+        <ion-select [(ngModel)]="language" (ionChange)="setLanguage($event)">
+            <ion-option selected="true" value="es">{{ 'APPSETTINGS.SPANISH' | translate }}</ion-option>
+            <ion-option value="en">{{ 'APPSETTINGS.ENGLISH' | translate }}</ion-option>
         </ion-select>
     </ion-item>
 </ion-content>

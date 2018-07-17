@@ -1,0 +1,27 @@
+{
+	"MENU": {
+		"MENU": "Menu",
+		"SIGNIN": "Sign in",
+		"APPSETTINGS": "App settings",
+		"LOGOUT": "Logout"
+	},
+	"HOME": {
+		"HOME": "Home",
+		"LOGIN": "Login",
+		"EMAIL": "Email",
+		"PASSWORD": "Password",
+		"SUBMIT": "Submit"
+	},
+	"SIGNUP": {
+		"OR": "or",
+		"EMAIL": "EMAIL",
+		"PASSWORD": "PASSWORD",
+		"SUBMIT": "SIGN UP",
+		"SIGNUP": "SIGN UP"
+    },
+    "APPSETTINGS": {
+        "LANGUAGE": "Language",
+        "SPANISH": "Spanish",
+        "ENGLISH": "English"
+    }
+}

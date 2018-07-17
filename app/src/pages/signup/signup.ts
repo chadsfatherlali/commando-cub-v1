@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
-
-import { TranslateService } from '@ngx-translate/core';
+import { Component } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { auth } from 'firebase/app';
 
 @Component({
     selector: 'page-signup',
@@ -8,8 +8,16 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SignUpPage {
     constructor (
-        private translate: TranslateService,
-    ) {
-        this.translate.setDefaultLang('es')
+        public authFire: AngularFireAuth
+    ) {}
+
+    private signUpWithFacebook () {
+        this.authFire.auth.signInWithPopup(new auth.FacebookAuthProvider())
+            .then(res => {
+                console.log('OK', res)
+            })
+            .catch(err => {
+                console.log('KO', err)
+            })
     }
 }
