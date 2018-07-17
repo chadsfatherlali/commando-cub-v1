@@ -11,13 +11,11 @@ import { HomePage } from '../home/home';
 import { NavController } from 'ionic-angular';
 
 @Component({
-    selector: 'page-signup',
-    templateUrl: 'signup.html'
+    selector: 'page-signin',
+    templateUrl: 'signin.html'
 })
-export class SignUpPage {
-    private rootPage:any
-
-    public signUpWithEmailAndPassword_form: FormGroup
+export class SignInPage {
+    public signInWithEmailAndPassword_form: FormGroup
     public userCredentials: any = {
         email: null,
         password: null
@@ -28,7 +26,7 @@ export class SignUpPage {
         private formBuilder: FormBuilder,
         public authFire: AngularFireAuth
     ) {
-        this.signUpWithEmailAndPassword_form = this.formBuilder.group({
+        this.signInWithEmailAndPassword_form = this.formBuilder.group({
             email: [
                 '', 
                 [
@@ -46,7 +44,7 @@ export class SignUpPage {
         })
     }
 
-    signUpWithFacebook () {
+    signInWithFacebook () {
         this.authFire.auth.signInWithPopup(new auth.FacebookAuthProvider())
             .then(res => {
                 console.log('OK', res)
@@ -57,7 +55,7 @@ export class SignUpPage {
             })
     }
 
-    signUpWithGoogle () {
+    signInWithGoogle () {
         this.authFire.auth.signInWithPopup(new auth.GoogleAuthProvider())
             .then(res => {
                 console.log('OK', res)
@@ -68,8 +66,8 @@ export class SignUpPage {
             })
     }
 
-    signUpWithEmailAndPassword () {
-        this.authFire.auth.createUserWithEmailAndPassword(
+    signInWithEmailAndPassword () {
+        this.authFire.auth.signInWithEmailAndPassword(
             this.userCredentials.email,
             this.userCredentials.password
         )

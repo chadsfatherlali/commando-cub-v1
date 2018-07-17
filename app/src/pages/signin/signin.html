@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button [menuToggle]="activeMenu">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'SIGNIN.SIGNIN' | translate }}</ion-title>
+    </ion-navbar>      
+</ion-header>
+
+<ion-content padding text-center>
+    <img src="/assets/imgs/perro.svg"/>
+
+    <button ion-button color="light" block icon-end (click)="signInWithFacebook()">
+        FACEBOOK
+        <ion-icon name="logo-facebook"></ion-icon>
+    </button>
+    <button ion-button color="light" block icon-end (click)="signInWithGoogle()">
+        GOOGLE
+        <ion-icon name="logo-google"></ion-icon>
+    </button>
+
+    <div class="separator">{{ 'SIGNIN.OR' | translate }}</div>
+
+    <form [formGroup]="signInWithEmailAndPassword_form" (ngSubmit)="signInWithEmailAndPassword()">
+        <ion-item>
+            <ion-input formControlName="email" type="email" placeholder="{{ 'SIGNIN.EMAIL' | translate }}" [(ngModel)]="userCredentials.email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input formControlName="password" type="password" placeholder="{{ 'SIGNIN.PASSWORD' | translate }}" [(ngModel)]="userCredentials.password"></ion-input>
+        </ion-item>
+
+        <button ion-button color="dark" block icon-end type="submit" [disabled]="!signInWithEmailAndPassword_form.valid">
+            {{ 'SIGNIN.SUBMIT' | translate }}
+            <ion-icon name="paper-plane"></ion-icon>
+        </button>
+    </form>
+</ion-content>

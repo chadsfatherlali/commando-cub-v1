@@ -14,22 +14,22 @@
         FACEBOOK
         <ion-icon name="logo-facebook"></ion-icon>
     </button>
-    <button ion-button color="light" block icon-end>
+    <button ion-button color="light" block icon-end (click)="signUpWithGoogle()">
         GOOGLE
         <ion-icon name="logo-google"></ion-icon>
     </button>
 
     <div class="separator">{{ 'SIGNUP.OR' | translate }}</div>
 
-    <form>
+    <form [formGroup]="signUpWithEmailAndPassword_form" (ngSubmit)="signUpWithEmailAndPassword()">
         <ion-item>
-            <ion-input type="email" placeholder="{{ 'SIGNUP.EMAIL' | translate }}"></ion-input>
+            <ion-input formControlName="email" type="email" placeholder="{{ 'SIGNUP.EMAIL' | translate }}" [(ngModel)]="userCredentials.email"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="password" placeholder="{{ 'SIGNUP.PASSWORD' | translate }}"></ion-input>
+            <ion-input formControlName="password" type="password" placeholder="{{ 'SIGNUP.PASSWORD' | translate }}" [(ngModel)]="userCredentials.password"></ion-input>
         </ion-item>
 
-        <button ion-button color="dark" block icon-end>
+        <button ion-button color="dark" block icon-end type="submit" [disabled]="!signUpWithEmailAndPassword_form.valid">
             {{ 'SIGNUP.SUBMIT' | translate }}
             <ion-icon name="paper-plane"></ion-icon>
         </button>

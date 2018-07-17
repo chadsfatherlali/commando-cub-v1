@@ -2,6 +2,7 @@
 	"MENU": {
 		"MENU": "Menu",
 		"SIGNIN": "Sign in",
+		"SIGNUP": "Sign up",
 		"APPSETTINGS": "App settings",
 		"LOGOUT": "Logout"
 	},
@@ -18,6 +19,13 @@
 		"PASSWORD": "PASSWORD",
 		"SUBMIT": "SIGN UP",
 		"SIGNUP": "SIGN UP"
+	},
+	"SIGNIN": {
+		"OR": "or",
+		"EMAIL": "EMAIL",
+		"PASSWORD": "PASSWORD",
+		"SUBMIT": "SIGN IN",
+		"SIGNIN": "SIGN IN"
     },
     "APPSETTINGS": {
         "LANGUAGE": "Language",

@@ -7,7 +7,7 @@ import { Storage } from '@ionic/storage';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { HomePage } from '../pages/home/home';
+import { SignInPage } from '../pages/signin/signin';
 import { SignUpPage } from '../pages/signup/signup';
 import { AppSettingsPage } from '../pages/appsettings/appsettings';
 
@@ -16,8 +16,10 @@ import { AppSettingsPage } from '../pages/appsettings/appsettings';
 })
 export class MyApp {
   private rootPage:any = SignUpPage
+  private signInPage:any
   private signUpPage:any
   private appSettingsPage:any
+  
   public userStatus:any
 
   constructor(
@@ -45,6 +47,7 @@ export class MyApp {
       this.translate.setDefaultLang(lang)
     })
 
+    this.signInPage = SignInPage
     this.signUpPage = SignUpPage
     this.appSettingsPage = AppSettingsPage
   }
@@ -55,6 +58,7 @@ export class MyApp {
 
   logout () {
     this.authFire.auth.signOut()
+    this.rootPage = this.signInPage
   }
 }
 

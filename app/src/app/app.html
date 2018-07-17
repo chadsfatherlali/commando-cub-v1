@@ -7,6 +7,10 @@
     <ion-content>
         <ion-list>
             <button *ngIf="!userStatus" ion-item menuClose (click)="menuNavigation(signUpPage)">
+                <ion-icon name="create" item-start></ion-icon> 
+                {{ 'MENU.SIGNUP' | translate }}
+            </button>
+            <button *ngIf="!userStatus" ion-item menuClose (click)="menuNavigation(signInPage)">
                 <ion-icon name="key" item-start></ion-icon> 
                 {{ 'MENU.SIGNIN' | translate }}
             </button>
