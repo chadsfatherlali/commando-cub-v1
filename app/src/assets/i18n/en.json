@@ -1,8 +1,10 @@
 {
+	"LOADER": "Please wait...",
 	"MENU": {
 		"MENU": "Menu",
 		"SIGNIN": "Sign in",
 		"SIGNUP": "Sign up",
+		"SIGNINORSIGNUP": "Login / sign up",
 		"APPSETTINGS": "App settings",
 		"LOGOUT": "Logout"
 	},
@@ -25,8 +27,19 @@
 		"EMAIL": "EMAIL",
 		"PASSWORD": "PASSWORD",
 		"SUBMIT": "SIGN IN",
+		"SIGNIN": "SIGN IN",
+		"ERRORS": {
+			"auth/user-not-found": "User not found"
+		}
+	},
+	"SIGNINORSIGNUP": {
+		"TITLE": "SIGN IN / SIGN UP",
+		"OR": "or",
+		"EMAIL": "EMAIL",
+		"PASSWORD": "PASSWORD",
+		"SUBMIT": "SIGN IN",
 		"SIGNIN": "SIGN IN"
-    },
+	},
     "APPSETTINGS": {
         "LANGUAGE": "Language",
         "SPANISH": "Spanish",

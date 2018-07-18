@@ -1,8 +1,10 @@
 {
+	"LOADER": "Por favor espere...",
 	"MENU": {
 		"MENU": "Menú",
 		"SIGNIN": "Logarse",
 		"SIGNUP": "Registrarse",
+		"SIGNINORSIGNUP": "Logarse / registrarse",
 		"APPSETTINGS": "Configuración de la App",
 		"LOGOUT": "Salir"
 	},
@@ -25,8 +27,14 @@
 		"EMAIL": "EMAIL",
 		"PASSWORD": "CONTRASEÑA",
 		"SUBMIT": "LOGARSE",
-		"SIGNIN": "LOGARSE"
-    },
+		"SIGNIN": "LOGARSE",
+		"ERRORS": {
+			"auth/user-not-found": "Usuario no encontrado"
+		}
+	},
+	"SIGNINORSIGNUP": {
+		"TITLE": "LOGARSE / REGISTRARSE"
+	},
 	"APPSETTINGS": {
         "LANGUAGE": "Idioma",
         "SPANISH": "Español",

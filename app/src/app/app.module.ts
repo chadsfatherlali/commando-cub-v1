@@ -17,6 +17,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SignInPage } from '../pages/signin/signin';
 import { SignUpPage } from '../pages/signup/signup';
+import { SignInOrSignUpPage } from '../pages/signinorsignup/signinorsignup';
 import { AppSettingsPage } from '../pages/appsettings/appsettings';
 
 export const environment = {
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     HomePage,
     SignInPage,
     SignUpPage,
+    SignInOrSignUpPage,
     AppSettingsPage
   ],
   imports: [
@@ -64,6 +66,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     HomePage,
     SignInPage,
     SignUpPage,
+    SignInOrSignUpPage,
     AppSettingsPage
   ],
   providers: [
