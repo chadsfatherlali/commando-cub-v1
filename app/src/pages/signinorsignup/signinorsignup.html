@@ -23,11 +23,11 @@
 
     <div [ngSwitch]="segment">
         <div *ngSwitchCase="'signin'">
-            <button ion-button color="light" block icon-end (click)="signInWithFacebook()">
+            <button ion-button block icon-end (click)="signInWithFacebook()">
                 FACEBOOK
                 <ion-icon name="logo-facebook"></ion-icon>
             </button>
-            <button ion-button color="light" block icon-end (click)="signInWithGoogle()">
+            <button ion-button color="danger" block icon-end (click)="signInWithGoogle()">
                 GOOGLE
                 <ion-icon name="logo-google"></ion-icon>
             </button>
