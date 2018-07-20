@@ -8,6 +8,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
 import { TranslateService } from '@ngx-translate/core'
 import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 import { HomePage } from '../home/home';
 import { 
@@ -40,6 +41,7 @@ export class SignInOrSignUpPage {
 
         public platform: Platform,
         public facebook: Facebook,
+        public googlePlus: GooglePlus,
         public authFire: AngularFireAuth
     ) {
         const validators = {
@@ -77,11 +79,11 @@ export class SignInOrSignUpPage {
 
                     this.authFire.auth.signInWithCredential(facebookCredentials)
                         .then(res => {
-                            console.log('Ok', res)
+                            console.log('OK', res)
                             this.navCtrl.setRoot(HomePage)
                         })
                         .catch(err => {
-                            console.log('Ko', err)
+                            console.log('KO', err)
                         })
                 })
         }
@@ -99,14 +101,39 @@ export class SignInOrSignUpPage {
     }
 
     signInWithGoogle () {
-        this.authFire.auth.signInWithPopup(new auth.GoogleAuthProvider())
-            .then(res => {
-                console.log('OK', res)
-                this.navCtrl.setRoot(HomePage)
+        if (this.platform.is('cordova')) {
+            this.googlePlus.login({
+                'webClientId': '306564613918-v50mip03ntgv4kbm4hse6pm6p02nojln.apps.googleusercontent.com',
+                'offline': true,
+                'scopes': 'profile email'
             })
-            .catch(err => {
-                console.log('KO', err)
-            })
+                .then(res => {
+                    const googlePlusCredentials = auth.GoogleAuthProvider.credential(res.idToken)
+
+                    this.authFire.auth.signInWithCredential(googlePlusCredentials)
+                        .then(res => {
+                            console.log('OK', res)
+                            this.navCtrl.setRoot(HomePage)
+                        })
+                        .catch(err => {
+                            console.log('KO', err)
+                        })
+                })
+                .catch(err => {
+                    console.log('KO', err)
+                })
+        }
+
+        else {
+            this.authFire.auth.signInWithPopup(new auth.GoogleAuthProvider())
+                .then(res => {
+                    console.log('OK', res)
+                    this.navCtrl.setRoot(HomePage)
+                })
+                .catch(err => {
+                    console.log('KO', err)
+                })
+        }
     }
 
     signInWithEmailAndPassword () {
