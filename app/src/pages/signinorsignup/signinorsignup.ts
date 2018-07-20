@@ -4,18 +4,20 @@ import {
     FormBuilder,
     FormGroup
 } from '@angular/forms';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { auth } from 'firebase';
 import { TranslateService } from '@ngx-translate/core'
 import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
-
-import { HomePage } from '../home/home';
 import { 
     NavController,
     ToastController,
     Platform
 } from 'ionic-angular';
+
+import { AngularFireAuth } from 'angularfire2/auth';
+import { auth } from 'firebase';
+import { AngularFirestore } from 'angularfire2/firestore';
+
+import { HomePage } from '../home/home';
 
 @Component({
     selector: 'page-signinorsignup',
@@ -23,6 +25,7 @@ import {
 })
 export class SignInOrSignUpPage {
     private toast: any
+
     public signUp_errors: any
     public signIn_errors: any
     public signUpWithEmailAndPassword_form: FormGroup
@@ -38,6 +41,7 @@ export class SignInOrSignUpPage {
         private formBuilder: FormBuilder,
         private toastCtrl: ToastController,
         private translate: TranslateService,
+        private angularFireStore: AngularFirestore,
 
         public platform: Platform,
         public facebook: Facebook,
@@ -71,16 +75,48 @@ export class SignInOrSignUpPage {
         })
     }
 
+    private createDocOrNot (doc: string, data: any, action: any) {
+        const docRef = this.angularFireStore.doc(doc);
+
+        docRef.ref.get().
+            then(doc => {
+                if (!doc.exists) {
+                    docRef.set(data)
+                    .then(res => {
+                        console.log('OK', res)
+                        
+                        action()
+                    })
+                    .catch(err => {
+                        console.log('KO', err)
+                    })
+                }
+
+                else {
+                    action()
+                }
+            })
+            .catch(err => {
+                console.log('KO', err)
+            })
+    }
+
     signInWithFacebook () {
         if (this.platform.is('cordova')) {
             this.facebook.login(['email', 'public_profile'])
                 .then(res => {
                     const facebookCredentials = auth.FacebookAuthProvider.credential(res.authResponse.accessToken)
-
+                    
                     this.authFire.auth.signInWithCredential(facebookCredentials)
                         .then(res => {
-                            console.log('OK', res)
-                            this.navCtrl.setRoot(HomePage)
+                            this.createDocOrNot(
+                                `users/${res.email}`,
+                                {
+                                    displayName: res.displayName,
+                                    photoURL: res.photoURL   
+                                },
+                                this.navCtrl.setRoot(HomePage)
+                            )
                         })
                         .catch(err => {
                             console.log('KO', err)
@@ -91,8 +127,14 @@ export class SignInOrSignUpPage {
         else {
             this.authFire.auth.signInWithPopup(new auth.FacebookAuthProvider())
                 .then(res => {
-                    console.log('OK', res)
-                    this.navCtrl.setRoot(HomePage)
+                    this.createDocOrNot(
+                        `users/${res.user.email}`,
+                        {
+                            displayName: res.user.displayName,
+                            photoURL: res.user.photoURL
+                        },
+                        this.navCtrl.setRoot(HomePage)
+                    )
                 })
                 .catch(err => {
                     console.log('KO', err)
@@ -112,8 +154,14 @@ export class SignInOrSignUpPage {
 
                     this.authFire.auth.signInWithCredential(googlePlusCredentials)
                         .then(res => {
-                            console.log('OK', res)
-                            this.navCtrl.setRoot(HomePage)
+                            this.createDocOrNot(
+                                `users/${res.email}`,
+                                {
+                                    displayName: res.displayName,
+                                    photoURL: res.photoURL   
+                                },
+                                this.navCtrl.setRoot(HomePage)
+                            )
                         })
                         .catch(err => {
                             console.log('KO', err)
@@ -127,8 +175,14 @@ export class SignInOrSignUpPage {
         else {
             this.authFire.auth.signInWithPopup(new auth.GoogleAuthProvider())
                 .then(res => {
-                    console.log('OK', res)
-                    this.navCtrl.setRoot(HomePage)
+                    this.createDocOrNot(
+                        `users/${res.user.email}`,
+                        {
+                            displayName: res.user.displayName,
+                            photoURL: res.user.photoURL   
+                        },
+                        this.navCtrl.setRoot(HomePage)
+                    )
                 })
                 .catch(err => {
                     console.log('KO', err)
@@ -142,8 +196,6 @@ export class SignInOrSignUpPage {
             this.userCredentials.password
         )
             .then(res => {
-                console.log('OK', res)
-
                 this.userCredentials.email = null
                 this.userCredentials.password = null
                 this.navCtrl.setRoot(HomePage)
@@ -165,8 +217,6 @@ export class SignInOrSignUpPage {
             this.userCredentials.password
         )
             .then(res => {
-                console.log('OK', res)
-
                 this.userCredentials.email = null
                 this.userCredentials.password = null
                 this.segment = 'signin'

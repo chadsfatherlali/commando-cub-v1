@@ -6,7 +6,8 @@
 		"SIGNUP": "Sign up",
 		"SIGNINORSIGNUP": "Login / sign up",
 		"APPSETTINGS": "App settings",
-		"LOGOUT": "Logout"
+		"LOGOUT": "Logout",
+		"USERS": "Users"
 	},
 	"HOME": {
 		"HOME": "Home",
@@ -44,5 +45,8 @@
         "LANGUAGE": "Language",
         "SPANISH": "Spanish",
         "ENGLISH": "English"
-    }
+	},
+	"USERSLIST": {
+		"TITLE": "Users"
+	}
 }

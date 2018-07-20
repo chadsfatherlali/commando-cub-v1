@@ -3,14 +3,17 @@
       <button ion-button [menuToggle]="activeMenu">
           <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>HOME</ion-title>
+      <ion-title>{{ 'USERSLIST.TITLE' | translate }}</ion-title>
   </ion-navbar>      
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of items | async">
-      {{ item.name }} {{ item.lastname }}
+    <ion-item *ngFor="let user of users | async">
+      <ion-avatar item-start>
+        <img src="{{ user.photoURL }}">
+      </ion-avatar>
+      <h2>{{ user.displayName }}</h2>
     </ion-item>
   </ion-list>
 </ion-content>

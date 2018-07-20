@@ -10,6 +10,10 @@
                 <ion-icon name="key" item-start></ion-icon> 
                 {{ 'MENU.SIGNINORSIGNUP' | translate }}  
             </button>
+            <button *ngIf="userStatus" ion-item menuClose (click)="menuNavigation(homePage)">
+                <ion-icon name="people" item-start></ion-icon>
+                {{ 'MENU.USERS' | translate }}
+            </button>
             <button ion-item menuClose (click)="menuNavigation(appSettingsPage)">
                 <ion-icon name="settings" item-start></ion-icon> 
                 {{ 'MENU.APPSETTINGS' | translate }}

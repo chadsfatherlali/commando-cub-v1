@@ -10,12 +10,12 @@ import { Observable } from 'rxjs';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public items: Observable<any[]>;
+  public users: Observable<any[]>;
 
   constructor(
   	public navCtrl: NavController,
     private db: AngularFirestore
   ) {
-    this.items = this.db.collection('people').valueChanges()
+    this.users = this.db.collection('users').valueChanges()
   }
 }

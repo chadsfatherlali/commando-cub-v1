@@ -6,7 +6,8 @@
 		"SIGNUP": "Registrarse",
 		"SIGNINORSIGNUP": "Logarse / registrarse",
 		"APPSETTINGS": "Configuración de la App",
-		"LOGOUT": "Salir"
+		"LOGOUT": "Salir",
+		"USERS": "Usuarios"
 	},
 	"HOME": {
 		"HOME": "Inicio",
@@ -39,5 +40,8 @@
         "LANGUAGE": "Idioma",
         "SPANISH": "Español",
         "ENGLISH": "Inglés"
-    }
+	},
+	"USERSLIST": {
+		"TITLE": "Usuarios"
+	}
 }
