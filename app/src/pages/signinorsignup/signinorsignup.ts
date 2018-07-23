@@ -26,6 +26,7 @@ import { HomePage } from '../home/home';
 export class SignInOrSignUpPage {
     private toast: any
 
+    public defaultPhoto: string = 'assets/imgs/perro.svg'
     public signUp_errors: any
     public signIn_errors: any
     public signUpWithEmailAndPassword_form: FormGroup
@@ -217,12 +218,26 @@ export class SignInOrSignUpPage {
             this.userCredentials.password
         )
             .then(res => {
-                this.userCredentials.email = null
-                this.userCredentials.password = null
-                this.segment = 'signin'
+                this.createDocOrNot(
+                    `users/${this.userCredentials.email}`,
+                    {
+                        displayName: this.userCredentials.email,
+                        photoURL: this.defaultPhoto
+                    },
+                    () => {
+                        this.userCredentials.email = null
+                        this.userCredentials.password = null
+                        this.segment = 'signin'
+                    }
+                )
             })
             .catch(err => {
                 console.log('KO', err)
+
+                this.translate.get(`SIGNUP.ERRORS.${err.code}`).subscribe(value => {
+                    this.toast.data.message = value
+                    this.toast.present()
+                })
             })
 
     }
