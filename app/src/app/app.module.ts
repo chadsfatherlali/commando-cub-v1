@@ -17,6 +17,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { UserProfilePage } from '../pages/userprofile/userprofile';
 import { SignInPage } from '../pages/signin/signin';
 import { SignUpPage } from '../pages/signup/signup';
 import { SignInOrSignUpPage } from '../pages/signinorsignup/signinorsignup';
@@ -42,6 +43,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   declarations: [
     MyApp,
     HomePage,
+    UserProfilePage,
     SignInPage,
     SignUpPage,
     SignInOrSignUpPage,
@@ -66,6 +68,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   entryComponents: [
     MyApp,
     HomePage,
+    UserProfilePage,
     SignInPage,
     SignUpPage,
     SignInOrSignUpPage,

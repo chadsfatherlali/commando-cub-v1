@@ -7,7 +7,8 @@
 		"SIGNINORSIGNUP": "Logarse / registrarse",
 		"APPSETTINGS": "Configuración de la App",
 		"LOGOUT": "Salir",
-		"USERS": "Usuarios"
+		"USERS": "Usuarios",
+		"USERPROFILE": "Perfil de usuario"
 	},
 	"HOME": {
 		"HOME": "Inicio",

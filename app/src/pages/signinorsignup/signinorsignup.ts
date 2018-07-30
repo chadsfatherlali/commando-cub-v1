@@ -42,7 +42,7 @@ export class SignInOrSignUpPage {
         private formBuilder: FormBuilder,
         private toastCtrl: ToastController,
         private translate: TranslateService,
-        private angularFireStore: AngularFirestore,
+        private db: AngularFirestore,
 
         public platform: Platform,
         public facebook: Facebook,
@@ -77,7 +77,7 @@ export class SignInOrSignUpPage {
     }
 
     private createDocOrNot (doc: string, data: any, action: any) {
-        const docRef = this.angularFireStore.doc(doc);
+        const docRef = this.db.doc(doc);
 
         docRef.ref.get().
             then(doc => {
@@ -116,7 +116,9 @@ export class SignInOrSignUpPage {
                                     displayName: res.displayName,
                                     photoURL: res.photoURL   
                                 },
-                                this.navCtrl.setRoot(HomePage)
+                                () => {
+                                    this.navCtrl.setRoot(HomePage)
+                                }
                             )
                         })
                         .catch(err => {
@@ -134,7 +136,7 @@ export class SignInOrSignUpPage {
                             displayName: res.user.displayName,
                             photoURL: res.user.photoURL
                         },
-                        this.navCtrl.setRoot(HomePage)
+                        () => this.navCtrl.setRoot(HomePage)
                     )
                 })
                 .catch(err => {
@@ -161,7 +163,7 @@ export class SignInOrSignUpPage {
                                     displayName: res.displayName,
                                     photoURL: res.photoURL   
                                 },
-                                this.navCtrl.setRoot(HomePage)
+                                () => this.navCtrl.setRoot(HomePage)
                             )
                         })
                         .catch(err => {
@@ -182,7 +184,7 @@ export class SignInOrSignUpPage {
                             displayName: res.user.displayName,
                             photoURL: res.user.photoURL   
                         },
-                        this.navCtrl.setRoot(HomePage)
+                        () => this.navCtrl.setRoot(HomePage)
                     )
                 })
                 .catch(err => {

@@ -6,6 +6,7 @@
     </ion-header>
     <ion-content>
         <ion-list>
+
             <button *ngIf="!userStatus" ion-item menuClose (click)="menuNavigation(signInOrSignUpPage)">
                 <ion-icon name="key" item-start></ion-icon> 
                 {{ 'MENU.SIGNINORSIGNUP' | translate }}  
@@ -21,6 +22,10 @@
         </ion-list>
 
         <ion-list *ngIf="userStatus">
+            <button ion-item menuClose icon-start (click)="menuNavigation(userProfilePage)">
+                <ion-icon name="person" item-start></ion-icon> 
+                {{ 'MENU.USERPROFILE' | translate }}
+            </button>
             <button ion-item menuClose icon-start (click)="logout()">
                 <ion-icon name="power" item-start></ion-icon> 
                 {{ 'MENU.LOGOUT' | translate }}

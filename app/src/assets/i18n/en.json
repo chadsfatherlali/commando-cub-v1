@@ -7,7 +7,8 @@
 		"SIGNINORSIGNUP": "Login / sign up",
 		"APPSETTINGS": "App settings",
 		"LOGOUT": "Logout",
-		"USERS": "Users"
+		"USERS": "Users",
+		"USERPROFILE": "User profile"
 	},
 	"HOME": {
 		"HOME": "Home",

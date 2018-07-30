@@ -10,11 +10,12 @@ import { Storage } from '@ionic/storage';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
+import { HomePage } from '../pages/home/home';
+import { UserProfilePage } from '../pages/userprofile/userprofile';
 import { SignInOrSignUpPage } from '../pages/signinorsignup/signinorsignup';
 import { AppSettingsPage } from '../pages/appsettings/appsettings';
 
 import { App } from 'ionic-angular';
-import { HomePage } from '../pages/home/home';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,6 +23,7 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   private rootPage:any = null
   private homePage:any
+  private userProfilePage:any
   private signInOrSignUpPage:any
   private appSettingsPage:any
   private loader:any
@@ -75,6 +77,7 @@ export class MyApp {
     })
 
     this.homePage = HomePage
+    this.userProfilePage = UserProfilePage
     this.signInOrSignUpPage = SignInOrSignUpPage
     this.appSettingsPage = AppSettingsPage
   }
