@@ -83,7 +83,7 @@ export class MyApp {
   }
 
   menuNavigation (page) {
-    this.rootPage = page
+    this.app.getRootNav().setRoot(page)
   }
 
   logout () {

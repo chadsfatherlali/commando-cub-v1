@@ -9,11 +9,13 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let user of users | async">
-      <ion-avatar item-start>
-        <img class="orange-bg" src="{{ user.photoURL }}" />
-      </ion-avatar>
-      <h2>{{ user.displayName }}</h2>
-    </ion-item>
+    <ng-template ngFor let-user [ngForOf]="users | async">
+      <button ion-item (click)="toProfile(user.email)">
+        <ion-avatar item-start>
+          <img class="orange-bg" src="{{ user.photoURL }}" />
+        </ion-avatar>
+        <h2>{{ user.displayName }}</h2>
+      </button>
+    </ng-template>
   </ion-list>
 </ion-content>

@@ -8,7 +8,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { Observable } from 'rxjs';
 import { Item } from 'ionic-angular/umd';
-import { NavController } from 'ionic-angular';
+import { 
+    NavController,
+    NavParams
+} from 'ionic-angular';
 
 import { SignInOrSignUpPage } from '../signinorsignup/signinorsignup';
 
@@ -18,22 +21,37 @@ import { SignInOrSignUpPage } from '../signinorsignup/signinorsignup';
 })
 export class UserProfilePage {
     private userDoc:AngularFirestoreDocument<Item>
+    
+    public userStatus:any
     public user: Observable<Item>
 
     constructor (
         public authFire: AngularFireAuth,
         private db: AngularFirestore,
-        private navCtrl: NavController
-    ) {        
-        this.authFire.authState.subscribe(user => {
-            if (user) {
-                this.userDoc = this.db.doc<Item>(`users/${user.email}`)
-                this.user = this.userDoc.valueChanges()
-            }
+        private navCtrl: NavController,
+        private navParams: NavParams
+    ) { 
+        const userEmail = this.navParams.get('email')
+        
+        console.log(userEmail)
 
-            else {
-                this.navCtrl.setRoot(SignInOrSignUpPage)
-            }
-        })
+        if (userEmail) {
+            this.setUserInfo(userEmail)
+        }
+
+        else {
+            this.authFire.authState.subscribe(user => {
+                this.userStatus = user
+
+                user
+                    ? this.setUserInfo(user.email)
+                    : this.navCtrl.setRoot(SignInOrSignUpPage)
+            })
+        }
+    }
+
+    private setUserInfo (userEmail:string) {
+        this.userDoc = this.db.doc<Item>(`users/${userEmail}`)
+        this.user = this.userDoc.valueChanges()
     }
 }

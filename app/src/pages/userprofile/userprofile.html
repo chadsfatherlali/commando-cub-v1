@@ -3,22 +3,32 @@
         <button ion-button [menuToggle]="activeMenu">
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>{{ 'SIGNUP.SIGNUP' | translate }}</ion-title>
+        <ion-title>{{ 'USERPROFILE.TITLE' | translate }}</ion-title>
     </ion-navbar>      
 </ion-header>
 
 <ion-content class="card-background-page">
     <ion-card>
-        <img src="{{ (user | async)?.photoURL }}" />
+        <figure class="circle">
+            <img src="{{ (user | async)?.photoURL }}" />
+        </figure>
         <ion-card-content>
             <ion-card-title>{{ (user | async)?.displayName }}</ion-card-title>
+        </ion-card-content>
+    </ion-card>
 
-            <ion-list>
-                <button ion-item>
-                    <ion-icon name="camera" item-start></ion-icon>
-                    Cambiar foto de perfil
-                </button>
-            </ion-list>
+    <ion-card *ngIf="userStatus">
+        <ion-card-content>
+                <ion-list>
+                    <button ion-item>
+                        <ion-icon name="camera" item-start></ion-icon>
+                        {{ 'USERPROFILE.CHANGEPHOTO' | translate }}
+                    </button>
+                    <button ion-item>
+                        <ion-icon name="happy" item-start></ion-icon>
+                        {{ 'USERPROFILE.CHANGEDISPLAYNAME' | translate }}
+                    </button>
+                </ion-list>
         </ion-card-content>
     </ion-card>
 </ion-content>

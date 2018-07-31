@@ -114,7 +114,8 @@ export class SignInOrSignUpPage {
                                 `users/${res.email}`,
                                 {
                                     displayName: res.displayName,
-                                    photoURL: res.photoURL   
+                                    photoURL: res.photoURL,
+                                    email: res.email
                                 },
                                 () => {
                                     this.navCtrl.setRoot(HomePage)
@@ -134,7 +135,8 @@ export class SignInOrSignUpPage {
                         `users/${res.user.email}`,
                         {
                             displayName: res.user.displayName,
-                            photoURL: res.user.photoURL
+                            photoURL: res.user.photoURL,
+                            email: res.user.email
                         },
                         () => this.navCtrl.setRoot(HomePage)
                     )
@@ -161,7 +163,8 @@ export class SignInOrSignUpPage {
                                 `users/${res.email}`,
                                 {
                                     displayName: res.displayName,
-                                    photoURL: res.photoURL   
+                                    photoURL: res.photoURL,
+                                    email: res.email
                                 },
                                 () => this.navCtrl.setRoot(HomePage)
                             )
@@ -182,7 +185,8 @@ export class SignInOrSignUpPage {
                         `users/${res.user.email}`,
                         {
                             displayName: res.user.displayName,
-                            photoURL: res.user.photoURL   
+                            photoURL: res.user.photoURL,
+                            email: res.user.email
                         },
                         () => this.navCtrl.setRoot(HomePage)
                     )
@@ -201,6 +205,7 @@ export class SignInOrSignUpPage {
             .then(res => {
                 this.userCredentials.email = null
                 this.userCredentials.password = null
+
                 this.navCtrl.setRoot(HomePage)
             })
             .catch(err => {
@@ -224,7 +229,8 @@ export class SignInOrSignUpPage {
                     `users/${this.userCredentials.email}`,
                     {
                         displayName: this.userCredentials.email,
-                        photoURL: this.defaultPhoto
+                        photoURL: this.defaultPhoto,
+                        email: this.userCredentials.email
                     },
                     () => {
                         this.userCredentials.email = null

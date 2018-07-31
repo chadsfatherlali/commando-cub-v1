@@ -49,5 +49,10 @@
 	},
 	"USERSLIST": {
 		"TITLE": "Users"
+	},
+	"USERPROFILE": {
+		"TITLE": "User profile",
+		"CHANGEPHOTO": "Change your profile picture",
+		"CHANGEDISPLAYNAME": "Change your display name"
 	}
 }

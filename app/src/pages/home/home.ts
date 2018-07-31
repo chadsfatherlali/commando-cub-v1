@@ -5,6 +5,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
 
 import { Observable } from 'rxjs';
 
+import { UserProfilePage  } from '../userprofile/userprofile';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -17,5 +19,11 @@ export class HomePage {
     private db: AngularFirestore
   ) {
     this.users = this.db.collection('users').valueChanges()
+  }
+
+  toProfile (email) {
+    this.navCtrl.setRoot(UserProfilePage, {
+      email: email
+    })
   }
 }
