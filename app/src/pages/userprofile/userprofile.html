@@ -8,12 +8,13 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-    <ion-card>
-        <figure class="circle">
-            <img src="{{ (user | async)?.photoURL }}" />
-        </figure>
+    <ion-card *ngIf="user | async as userdata">
+        <!-- <figure class="circle"> -->
+            <img src="{{ userdata.photoURL }}"/>
+            <!-- <img-loader useImg src="{{ userdata.photoURL }}"></img-loader> -->
+        <!-- </figure> -->
         <ion-card-content>
-            <ion-card-title>{{ (user | async)?.displayName }}</ion-card-title>
+            <ion-card-title>{{ userdata.displayName }}</ion-card-title>
         </ion-card-content>
     </ion-card>
 

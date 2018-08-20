@@ -5,6 +5,7 @@ import {
     AngularFirestoreDocument
 } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ImageLoaderConfig } from 'ionic-image-loader';
 
 import { Observable } from 'rxjs';
 import { Item } from 'ionic-angular/umd';
@@ -29,12 +30,14 @@ export class UserProfilePage {
         public authFire: AngularFireAuth,
         private db: AngularFirestore,
         private navCtrl: NavController,
-        private navParams: NavParams
-    ) { 
+        private navParams: NavParams,
+        private imageLoaderConfig: ImageLoaderConfig
+    ) {
+        this.imageLoaderConfig.useImageTag(true)
+        this.imageLoaderConfig.setMaximumCacheAge(24 * 60 * 60 * 1000)
+
         const userEmail = this.navParams.get('email')
         
-        console.log(userEmail)
-
         if (userEmail) {
             this.setUserInfo(userEmail)
         }

@@ -13,7 +13,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth'; 
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { IonicImageLoader } from 'ionic-image-loader'; 
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -53,6 +54,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     BrowserModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
+    IonicImageLoader.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     TranslateModule.forRoot({
