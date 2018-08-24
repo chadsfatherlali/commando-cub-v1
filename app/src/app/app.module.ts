@@ -23,6 +23,7 @@ import { SignInPage } from '../pages/signin/signin';
 import { SignUpPage } from '../pages/signup/signup';
 import { SignInOrSignUpPage } from '../pages/signinorsignup/signinorsignup';
 import { AppSettingsPage } from '../pages/appsettings/appsettings';
+import { ResetPasswordPage } from '../pages/resetpassword/resetpassword';
 
 export const environment = {
   production: false,
@@ -48,7 +49,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     SignInPage,
     SignUpPage,
     SignInOrSignUpPage,
-    AppSettingsPage
+    AppSettingsPage,
+    ResetPasswordPage
   ],
   imports: [
     BrowserModule,
@@ -74,7 +76,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     SignInPage,
     SignUpPage,
     SignInOrSignUpPage,
-    AppSettingsPage
+    AppSettingsPage,
+    ResetPasswordPage
   ],
   providers: [
     StatusBar,

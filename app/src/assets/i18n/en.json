@@ -35,12 +35,13 @@
 		}
 	},
 	"SIGNINORSIGNUP": {
-		"TITLE": "SIGN IN / SIGN UP",
+		"TITLE": "Sign In / Sign Up",
 		"OR": "or",
 		"EMAIL": "EMAIL",
 		"PASSWORD": "PASSWORD",
 		"SUBMIT": "SIGN IN",
-		"SIGNIN": "SIGN IN"
+		"SIGNIN": "SIGN IN",
+		"FORGOTPASSWORD": "Forgot your password?"
 	},
     "APPSETTINGS": {
         "LANGUAGE": "Language",
@@ -54,5 +55,9 @@
 		"TITLE": "User profile",
 		"CHANGEPHOTO": "Change your profile picture",
 		"CHANGEDISPLAYNAME": "Change your display name"
+	},
+	"RESETPASSWORD": {
+		"TITLE": "Reset password",
+		"RESETPASSWORD": "Reset password"
 	}
 }

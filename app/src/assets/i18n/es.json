@@ -35,7 +35,8 @@
 		}
 	},
 	"SIGNINORSIGNUP": {
-		"TITLE": "LOGARSE / REGISTRARSE"
+		"TITLE": "Logarse / Registrarse",
+		"FORGOTPASSWORD": "¿Has olvidado tu contraseña?"
 	},
 	"APPSETTINGS": {
         "LANGUAGE": "Idioma",
@@ -49,5 +50,9 @@
 		"TITLE": "Perfil de usuario",
 		"CHANGEPHOTO": "Cambiar foto de perfil",
 		"CHANGEDISPLAYNAME": "Change su nombre de perfil"
+	},
+	"RESETPASSWORD": {
+		"TITLE": "Restablecer contraseña",
+		"RESETPASSWORD": "Restablecer contraseña"
 	}
 }

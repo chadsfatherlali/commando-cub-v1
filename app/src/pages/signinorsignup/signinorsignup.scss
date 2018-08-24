@@ -13,4 +13,10 @@ page-signinorsignup {
     .content {
         background: linear-gradient(#e56109, #f22b2b)
     }
+
+    #forgot-password-link {
+        color: white;
+        cursor: pointer;
+        text-decoration: underline;
+    }
 }

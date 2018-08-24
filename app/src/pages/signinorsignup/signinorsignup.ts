@@ -18,6 +18,7 @@ import { auth } from 'firebase';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 import { HomePage } from '../home/home';
+import { ResetPasswordPage } from '../resetpassword/resetpassword';
 
 @Component({
     selector: 'page-signinorsignup',
@@ -26,6 +27,7 @@ import { HomePage } from '../home/home';
 export class SignInOrSignUpPage {
     private toast: any
 
+    public resetPasswordPage: any
     public defaultPhoto: string = 'assets/imgs/perro.svg'
     public signUp_errors: any
     public signIn_errors: any
@@ -65,6 +67,10 @@ export class SignInOrSignUpPage {
                 ]
             ]
         }
+
+        this.resetPasswordPage = ResetPasswordPage
+
+        console.log(this.resetPasswordPage)
 
         this.signUpWithEmailAndPassword_form = this.formBuilder.group(validators)
         this.signInWithEmailAndPassword_form = this.formBuilder.group(validators)
