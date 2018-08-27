@@ -49,7 +49,8 @@
 	"USERPROFILE": {
 		"TITLE": "Perfil de usuario",
 		"CHANGEPHOTO": "Cambiar foto de perfil",
-		"CHANGEDISPLAYNAME": "Cambiar nombre de perfil"
+		"CHANGEDISPLAYNAME": "Cambiar nombre de perfil",
+		"CREATEISSUE": "Crear una incidencia"
 	},
 	"RESETPASSWORD": {
 		"TITLE": "Restablecer contraseña",
@@ -58,5 +59,8 @@
 			"OK": "Por favor revise en la bandeja de entrada de su email por el link para restablecer su contraseña",
 			"KO": {}
 		}
+	},
+	"CREATEISSUE": {
+		"TITLE": "Crear una incidencia"
 	}
 }

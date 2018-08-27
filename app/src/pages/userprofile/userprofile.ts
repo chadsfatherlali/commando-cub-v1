@@ -15,6 +15,7 @@ import {
 } from 'ionic-angular';
 
 import { SignInOrSignUpPage } from '../signinorsignup/signinorsignup';
+import { CreateIssuePage } from '../createissue/createissue';
 
 @Component({
     selector: 'page-userprofile',
@@ -22,7 +23,8 @@ import { SignInOrSignUpPage } from '../signinorsignup/signinorsignup';
 })
 export class UserProfilePage {
     private userDoc:AngularFirestoreDocument<Item>
-    
+
+    public createIssuePage:any
     public userStatus:any
     public user: Observable<Item>
 
@@ -33,6 +35,8 @@ export class UserProfilePage {
         private navParams: NavParams,
         private imageLoaderConfig: ImageLoaderConfig
     ) {
+        this.createIssuePage = CreateIssuePage
+
         this.imageLoaderConfig.useImageTag(true)
         this.imageLoaderConfig.setMaximumCacheAge(24 * 60 * 60 * 1000)
 

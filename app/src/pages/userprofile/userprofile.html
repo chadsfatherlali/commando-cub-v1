@@ -29,4 +29,15 @@
                 </ion-list>
         </ion-card-content>
     </ion-card>
+
+    <ion-card>
+        <ion-card-content>
+            <ion-list>
+                <button color="danger" ion-item [navPush]="createIssuePage">
+                    <ion-icon name="paw" item-start></ion-icon>
+                    {{ 'USERPROFILE.CREATEISSUE' | translate }}
+                </button>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

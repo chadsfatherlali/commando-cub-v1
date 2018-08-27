@@ -54,7 +54,8 @@
 	"USERPROFILE": {
 		"TITLE": "User profile",
 		"CHANGEPHOTO": "Change your profile picture",
-		"CHANGEDISPLAYNAME": "Change your display name"
+		"CHANGEDISPLAYNAME": "Change your display name",
+		"CREATEISSUE": "Create an issue"
 	},
 	"RESETPASSWORD": {
 		"TITLE": "Reset password",
@@ -63,5 +64,8 @@
 			"OK": "Please look for in your email inbox the email whit a reset password link",
 			"KO": {}
 		}
+	},
+	"CREATEISSUE": {
+		"TITLE": "Create an issue"
 	}
 }
