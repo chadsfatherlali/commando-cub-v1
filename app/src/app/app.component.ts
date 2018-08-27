@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
+import { timer } from 'rxjs/observable/timer';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -47,9 +48,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
 
       statusBar.styleDefault();
+      splashScreen.hide();
     });
-
-    splashScreen.hide();
 
     this.storage.get('userLang').then(value => {
       let lang = value || 'es'
