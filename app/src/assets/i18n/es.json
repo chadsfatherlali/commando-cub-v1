@@ -49,10 +49,14 @@
 	"USERPROFILE": {
 		"TITLE": "Perfil de usuario",
 		"CHANGEPHOTO": "Cambiar foto de perfil",
-		"CHANGEDISPLAYNAME": "Change su nombre de perfil"
+		"CHANGEDISPLAYNAME": "Cambiar nombre de perfil"
 	},
 	"RESETPASSWORD": {
 		"TITLE": "Restablecer contraseña",
-		"RESETPASSWORD": "Restablecer contraseña"
+		"RESETPASSWORD": "Restablecer contraseña",
+		"MESSAGE": {
+			"OK": "Por favor revise en la bandeja de entrada de su email por el link para restablecer su contraseña",
+			"KO": {}
+		}
 	}
 }

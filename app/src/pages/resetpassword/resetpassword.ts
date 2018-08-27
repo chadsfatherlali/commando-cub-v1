@@ -21,13 +21,13 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class ResetPasswordPage {
     private toast: any
+    private resetPasswordStatus: boolean = false
 
     public signIn_errors: any
     public resetPassword_form: FormGroup
     public segment: string = 'signin'
     public userCredentials: any = {
         email: null,
-        password: null
     }
 
     constructor (
@@ -56,9 +56,30 @@ export class ResetPasswordPage {
             closeButtonText: 'Ok',
             duration: 10000
         })
+        this.toast.onDidDismiss(res => {
+            if (this.resetPasswordStatus) this.navCtrl.pop()
+        })
     }
 
     sendResetPasswordLink () {
+        this.authFire.auth.sendPasswordResetEmail(this.userCredentials.email)
+            .then(response => {
+                console.log('OK', response)
 
+                this.resetPasswordStatus = true
+                this.translate.get('RESETPASSWORD.MESSAGE.OK').subscribe(value => {
+                    this.toast.data.message = value
+                    this.toast.present()
+                })
+            })
+            .catch(err => {
+                console.log('KO', err)
+
+                this.resetPasswordStatus = false
+                this.translate.get(`RESETPASSWORD.MESSAGE.KO.${err.code}`).subscribe(value => {
+                    this.toast.data.message = value
+                    this.toast.present()
+                })
+            })
     }
 }

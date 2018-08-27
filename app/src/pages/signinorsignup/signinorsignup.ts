@@ -69,16 +69,12 @@ export class SignInOrSignUpPage {
         }
 
         this.resetPasswordPage = ResetPasswordPage
-
-        console.log(this.resetPasswordPage)
-
         this.signUpWithEmailAndPassword_form = this.formBuilder.group(validators)
         this.signInWithEmailAndPassword_form = this.formBuilder.group(validators)
         this.toast = this.toastCtrl.create({
             showCloseButton: true,
             position: 'bottom',
-            closeButtonText: 'Ok',
-            duration: 10000
+            closeButtonText: 'Ok'        
         })
     }
 
@@ -123,9 +119,7 @@ export class SignInOrSignUpPage {
                                     photoURL: res.photoURL,
                                     email: res.email
                                 },
-                                () => {
-                                    this.navCtrl.setRoot(HomePage)
-                                }
+                                () => this.navCtrl.setRoot(HomePage)
                             )
                         })
                         .catch(err => {

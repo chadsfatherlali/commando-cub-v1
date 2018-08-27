@@ -58,6 +58,10 @@
 	},
 	"RESETPASSWORD": {
 		"TITLE": "Reset password",
-		"RESETPASSWORD": "Reset password"
+		"RESETPASSWORD": "Reset password",
+		"MESSAGE": {
+			"OK": "Please look for in your email inbox the email whit a reset password link",
+			"KO": {}
+		}
 	}
 }
