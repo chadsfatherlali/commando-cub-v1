@@ -15,6 +15,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { IonicImageLoader } from 'ionic-image-loader'; 
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -86,6 +87,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AngularFirestore,
     Facebook,
     GooglePlus,
+    Geolocation,
     Storage,
     {
       provide: ErrorHandler, 

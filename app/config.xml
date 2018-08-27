@@ -91,4 +91,7 @@
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.efdphlnfj8ira5hgusufsrhn1gktldo4-306564613918" />
     </plugin>
     <engine name="android" spec="6.4.0" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
+    </plugin>
 </widget>

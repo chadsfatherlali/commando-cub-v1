@@ -4,7 +4,8 @@ import {
     FormBuilder,
     FormGroup
 } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core'
+import { TranslateService } from '@ngx-translate/core';
+import { Geolocation } from '@ionic-native/geolocation';
 import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { 
@@ -27,6 +28,10 @@ import { ResetPasswordPage } from '../resetpassword/resetpassword';
 export class SignInOrSignUpPage {
     private toast: any
 
+    public position: any = {
+        lat: 0,
+        lon: 0
+    }
     public resetPasswordPage: any
     public defaultPhoto: string = 'assets/imgs/perro.svg'
     public signUp_errors: any
@@ -45,6 +50,7 @@ export class SignInOrSignUpPage {
         private toastCtrl: ToastController,
         private translate: TranslateService,
         private db: AngularFirestore,
+        private geolocation: Geolocation,
 
         public platform: Platform,
         public facebook: Facebook,
@@ -75,6 +81,11 @@ export class SignInOrSignUpPage {
             showCloseButton: true,
             position: 'bottom',
             closeButtonText: 'Ok'        
+        })
+
+        this.geolocation.watchPosition().subscribe(data => {
+            this.position.lat = data.coords.latitude
+            this.position.lon = data.coords.longitude
         })
     }
 
