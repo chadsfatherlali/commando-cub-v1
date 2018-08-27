@@ -56,7 +56,7 @@ export class ResetPasswordPage {
             closeButtonText: 'Ok',
             duration: 10000
         })
-        this.toast.onDidDismiss(res => {
+        this.toast.onDidDismiss(() => {
             if (this.resetPasswordStatus) this.navCtrl.pop()
         })
     }
