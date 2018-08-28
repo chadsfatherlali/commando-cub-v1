@@ -67,5 +67,13 @@
 	},
 	"CREATEISSUE": {
 		"TITLE": "Create an issue"
+	},
+	"UPLOADIMAGE": {
+		"PROFILE": "Change your profile picture",
+		"ISSUE": "Upload a photo",
+		"SOURCE": {
+			"CAMERA": "Camera",
+			"FILE": "File"
+		}
 	}
 }

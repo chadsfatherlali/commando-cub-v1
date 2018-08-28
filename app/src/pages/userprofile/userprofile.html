@@ -18,7 +18,7 @@
     <ion-card *ngIf="userStatus">
         <ion-card-content>
                 <ion-list>
-                    <button ion-item>
+                    <button ion-item [navPush]="uploadImagePage" [navParams]="{title: 'PROFILE'}">
                         <ion-icon name="camera" item-start></ion-icon>
                         {{ 'USERPROFILE.CHANGEPHOTO' | translate }}
                     </button>
@@ -30,7 +30,7 @@
         </ion-card-content>
     </ion-card>
 
-    <ion-card>
+    <ion-card *ngIf="userStatus">
         <ion-card-content>
             <ion-list>
                 <button color="danger" ion-item [navPush]="createIssuePage">

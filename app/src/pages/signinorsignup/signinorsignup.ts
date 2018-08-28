@@ -84,8 +84,6 @@ export class SignInOrSignUpPage {
         })
 
         this.geolocation.watchPosition().subscribe(data => {
-            console.log('Localizamos');
-
             this.position.lat = data.coords.latitude
             this.position.lon = data.coords.longitude
         })

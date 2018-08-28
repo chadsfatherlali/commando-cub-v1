@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="source">
+        <ion-segment-button value="file">
+            {{ 'UPLOADIMAGE.SOURCE.FILE' | translate }}
+        </ion-segment-button>
+        <ion-segment-button value="camera">
+            {{ 'UPLOADIMAGE.SOURCE.CAMERA' | translate }}
+        </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ng-template ngFor let-photoThumb [ngForOf]="photosThumbs | async">
+      <img src="{{ photoThumb }}">
+    </ng-template>
+</ion-content>

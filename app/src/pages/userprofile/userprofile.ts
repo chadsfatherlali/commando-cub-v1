@@ -16,6 +16,7 @@ import {
 
 import { SignInOrSignUpPage } from '../signinorsignup/signinorsignup';
 import { CreateIssuePage } from '../createissue/createissue';
+import { UploadImagePage } from '../uploadimage/uploadimage';
 
 @Component({
     selector: 'page-userprofile',
@@ -24,6 +25,7 @@ import { CreateIssuePage } from '../createissue/createissue';
 export class UserProfilePage {
     private userDoc:AngularFirestoreDocument<Item>
 
+    public uploadImagePage:any
     public createIssuePage:any
     public userStatus:any
     public user: Observable<Item>
@@ -35,6 +37,7 @@ export class UserProfilePage {
         private navParams: NavParams,
         private imageLoaderConfig: ImageLoaderConfig
     ) {
+        this.uploadImagePage = UploadImagePage
         this.createIssuePage = CreateIssuePage
 
         this.imageLoaderConfig.useImageTag(true)
