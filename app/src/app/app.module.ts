@@ -15,6 +15,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { IonicImageLoader } from 'ionic-image-loader'; 
 import { Geolocation } from '@ionic-native/geolocation';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { SanitizerPipe } from '../pipes/sanitizer/sanitizer';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
 @NgModule({
   declarations: [
+    SanitizerPipe,
     MyApp,
     HomePage,
     UserProfilePage,

@@ -13,7 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: 'uploadimage.html',
 })
 export class UploadImagePage {
-  public photosThumbs:any
+  public photos:any
   public title:string
   public source: string = 'file'
 
@@ -25,8 +25,6 @@ export class UploadImagePage {
     public navCtrl: NavController, 
     public navParams: NavParams
   ) {
-    let _self = this;
-
     this.translate.get(`UPLOADIMAGE.${this.navParams.data.title}`).subscribe(value => {
       this.title = value
     })
@@ -37,14 +35,60 @@ export class UploadImagePage {
         
         this.photLibrary.getLibrary().subscribe({
           next: library => {
-            library.forEach(item => {
-              _self.photosThumbs.push(_self.sanitizer.bypassSecurityTrustUrl(item.thumbnailURL))
+            this.photos = library.map(item => {
+              return item
             })
           }
         })
       })
       .catch(err => {
         console.log('KO', err)
+        this.photos = [
+          {
+            creationDate: "Wed Aug 29 2018 12:49:17 GMT+0200 (CEST)",
+            fileName: "IMG_20180829_104915_933.jpg",
+            height: 0,
+            id: "187060;/storage/emulated/0/Pictures/Instagram/IMG_20180829_104915_933.jpg",
+            latitude: 0,
+            longitude: 0,
+            photoURL: "assets/imgs/perros.jpeg",
+            thumbnailURL: "assets/imgs/perros.jpeg",
+            width: 0
+          },
+          {
+            creationDate: "Wed Aug 29 2018 12:49:17 GMT+0200 (CEST)",
+            fileName: "IMG_20180829_104915_933.jpg",
+            height: 0,
+            id: "187060;/storage/emulated/0/Pictures/Instagram/IMG_20180829_104915_933.jpg",
+            latitude: 0,
+            longitude: 0,
+            photoURL: "assets/imgs/perros.jpeg",
+            thumbnailURL: "assets/imgs/perros.jpeg",
+            width: 0
+          },
+          {
+            creationDate: "Wed Aug 29 2018 12:49:17 GMT+0200 (CEST)",
+            fileName: "IMG_20180829_104915_933.jpg",
+            height: 0,
+            id: "187060;/storage/emulated/0/Pictures/Instagram/IMG_20180829_104915_933.jpg",
+            latitude: 0,
+            longitude: 0,
+            photoURL: "assets/imgs/perros.jpeg",
+            thumbnailURL: "assets/imgs/perros.jpeg",
+            width: 0
+          },
+          {
+            creationDate: "Wed Aug 29 2018 12:49:17 GMT+0200 (CEST)",
+            fileName: "IMG_20180829_104915_933.jpg",
+            height: 0,
+            id: "187060;/storage/emulated/0/Pictures/Instagram/IMG_20180829_104915_933.jpg",
+            latitude: 0,
+            longitude: 0,
+            photoURL: "assets/imgs/perros.jpeg",
+            thumbnailURL: "assets/imgs/perros.jpeg",
+            width: 0
+          }
+        ]
       })
   }
 }
