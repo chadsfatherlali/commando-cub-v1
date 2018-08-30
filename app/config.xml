@@ -97,5 +97,6 @@
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="To choose photos" />
     </plugin>
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <plugin name="cordova-plugin-firebase" spec="^1.1.0" />
     <engine name="android" spec="6.4.0" />
 </widget>

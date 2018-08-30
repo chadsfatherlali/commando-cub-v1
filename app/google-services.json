@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "306564613918",
+    "firebase_url": "https://commando-cub-test.firebaseio.com",
+    "project_id": "commando-cub-test",
+    "storage_bucket": "commando-cub-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306564613918:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306564613918-kpe0ur0ciksa8bhgm5ep5r2985c1eina.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.starter",
+            "certificate_hash": "522825ad745d6ae39295a291c49f0a75b5b901ab"
+          }
+        },
+        {
+          "client_id": "306564613918-v50mip03ntgv4kbm4hse6pm6p02nojln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4Yf2OuoqlnWvz1jFHyBj_PD2u9a6Sz3Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306564613918-v50mip03ntgv4kbm4hse6pm6p02nojln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

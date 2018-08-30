@@ -10,7 +10,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { IonicImageLoader } from 'ionic-image-loader'; 
@@ -65,6 +65,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     IonicStorageModule.forRoot(),
     IonicImageLoader.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     TranslateModule.forRoot({
