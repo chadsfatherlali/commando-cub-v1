@@ -1,19 +1,16 @@
 import { Component } from '@angular/core';
-
 import { 
     AngularFirestore,
     AngularFirestoreDocument
 } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ImageLoaderConfig } from 'ionic-image-loader';
-
 import { Observable } from 'rxjs';
 import { Item } from 'ionic-angular/umd';
-import { 
+import {
     NavController,
     NavParams
 } from 'ionic-angular';
-
 import { SignInOrSignUpPage } from '../signinorsignup/signinorsignup';
 import { CreateIssuePage } from '../createissue/createissue';
 import { UploadImagePage } from '../uploadimage/uploadimage';
@@ -32,6 +29,7 @@ export class UserProfilePage {
 
     constructor (
         public authFire: AngularFireAuth,
+
         private db: AngularFirestore,
         private navCtrl: NavController,
         private navParams: NavParams,

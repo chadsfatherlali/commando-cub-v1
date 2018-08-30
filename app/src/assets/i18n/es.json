@@ -66,9 +66,10 @@
 	"UPLOADIMAGE": {
 		"PROFILE": "Cambia la foto de perfil",
 		"ISSUE": "Sube una foto",
+		"LOADING": "Estamos subiendo su imagen",
 		"SOURCE": {
 			"CAMERA": "Cámara",
-			"FILE": "Archivos"
+			"FILE": "Librería"
 		}			
 	}
 }

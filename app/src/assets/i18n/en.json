@@ -71,9 +71,10 @@
 	"UPLOADIMAGE": {
 		"PROFILE": "Change your profile picture",
 		"ISSUE": "Upload a photo",
+		"LOADING": "We are uploading the image",
 		"SOURCE": {
 			"CAMERA": "Camera",
-			"FILE": "File"
+			"FILE": "Library"
 		}
 	}
 }

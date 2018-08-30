@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
-import { 
+import { finalize } from 'rxjs/operators';
+import {
+  LoadingController,
   NavController, 
   NavParams 
 } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
-import { PhotoLibrary } from '@ionic-native/photo-library';
+import { AngularFireStorage } from 'angularfire2/storage';
 import { DomSanitizer } from '@angular/platform-browser';
+import {
+  Camera,
+  CameraOptions
+} from '@ionic-native/camera';
 
 
 @Component({
@@ -17,78 +23,89 @@ export class UploadImagePage {
   public title:string
   public source: string = 'file'
 
-  constructor(
-    private photLibrary: PhotoLibrary,
-    private translate: TranslateService,
-    private sanitizer: DomSanitizer,
+  private loader:any
+  private user: any
+  private folderToUpload: string = 'users'
+  private cameraOptions: CameraOptions
 
+  constructor(
+    private translate: TranslateService,
+    private camera: Camera,
+    private storageFire: AngularFireStorage,
+
+    public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     public navParams: NavParams
   ) {
+    this.user = this.navParams.data.email
+
+    this.translate.get('UPLOADIMAGE.LOADING').subscribe(value => {
+      this.loader = this.loadingCtrl.create({
+        content: value
+      })
+    })
+    
     this.translate.get(`UPLOADIMAGE.${this.navParams.data.title}`).subscribe(value => {
       this.title = value
     })
-    
-    this.photLibrary.requestAuthorization()
-      .then(() => {
+
+    this.cameraOptions = {
+      quality: 50,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true 
+    } 
+  }
+
+  getImageFrom (source) {
+    this.cameraOptions.sourceType = (source === 'file')
+      ? this.camera.PictureSourceType.PHOTOLIBRARY
+      : this.camera.PictureSourceType.CAMERA
+
+    this.takePhoto()
+  }
+
+  private takePhoto () {
+    this.loader.present()
+
+    const dataType = 'data:image/jpg;base64,'
+
+    this.camera.getPicture(this.cameraOptions)
+      .then(imageData => {
         console.log('OK')
-        
-        this.photLibrary.getLibrary().subscribe({
-          next: library => {
-            this.photos = library.map(item => {
-              return item
-            })
-          }
-        })
+
+        this.uploadImage(
+          `${this.folderToUpload}/${this.user}/${new Date().getTime()}.jpg`,
+          `${dataType}${imageData}`
+        )
       })
       .catch(err => {
         console.log('KO', err)
-        this.photos = [
-          {
-            creationDate: "Wed Aug 29 2018 12:49:17 GMT+0200 (CEST)",
-            fileName: "IMG_20180829_104915_933.jpg",
-            height: 0,
-            id: "187060;/storage/emulated/0/Pictures/Instagram/IMG_20180829_104915_933.jpg",
-            latitude: 0,
-            longitude: 0,
-            photoURL: "assets/imgs/perros.jpeg",
-            thumbnailURL: "assets/imgs/perros.jpeg",
-            width: 0
-          },
-          {
-            creationDate: "Wed Aug 29 2018 12:49:17 GMT+0200 (CEST)",
-            fileName: "IMG_20180829_104915_933.jpg",
-            height: 0,
-            id: "187060;/storage/emulated/0/Pictures/Instagram/IMG_20180829_104915_933.jpg",
-            latitude: 0,
-            longitude: 0,
-            photoURL: "assets/imgs/perros.jpeg",
-            thumbnailURL: "assets/imgs/perros.jpeg",
-            width: 0
-          },
-          {
-            creationDate: "Wed Aug 29 2018 12:49:17 GMT+0200 (CEST)",
-            fileName: "IMG_20180829_104915_933.jpg",
-            height: 0,
-            id: "187060;/storage/emulated/0/Pictures/Instagram/IMG_20180829_104915_933.jpg",
-            latitude: 0,
-            longitude: 0,
-            photoURL: "assets/imgs/perros.jpeg",
-            thumbnailURL: "assets/imgs/perros.jpeg",
-            width: 0
-          },
-          {
-            creationDate: "Wed Aug 29 2018 12:49:17 GMT+0200 (CEST)",
-            fileName: "IMG_20180829_104915_933.jpg",
-            height: 0,
-            id: "187060;/storage/emulated/0/Pictures/Instagram/IMG_20180829_104915_933.jpg",
-            latitude: 0,
-            longitude: 0,
-            photoURL: "assets/imgs/perros.jpeg",
-            thumbnailURL: "assets/imgs/perros.jpeg",
-            width: 0
-          }
-        ]
+        
+        const imageData = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='
+
+        this.uploadImage(
+          `${this.folderToUpload}/${this.user}/${new Date().getTime()}.jpg`, 
+          `${dataType}${imageData}`
+        )
       })
+  }
+
+  private uploadImage (filePath: any, data: any) {
+    const fileRef = this.storageFire.ref(filePath)
+    const task = fileRef.putString(data, 'data_url')
+    
+    task.snapshotChanges()
+      .pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(value => {
+            console.log(value)
+
+            this.loader.dismiss();
+          })
+        })
+      )
+      .subscribe()
   }
 }

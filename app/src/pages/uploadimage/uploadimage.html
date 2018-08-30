@@ -2,30 +2,17 @@
   <ion-navbar>
     <ion-title>{{ title }}</ion-title>
   </ion-navbar>
-
-  <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="source">
-        <ion-segment-button value="file">
-            {{ 'UPLOADIMAGE.SOURCE.FILE' | translate }}
-        </ion-segment-button>
-        <ion-segment-button value="camera">
-            {{ 'UPLOADIMAGE.SOURCE.CAMERA' | translate }}
-        </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ng-template ngFor let-photo [ngForOf]="photos">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img [src]="photo.thumbnailURL | sanitizer" />
-        </ion-thumbnail>
-        <h2>{{ photo.fileName }}</h2>
-        <p>{{ photo.creationDate | date: 'short' }}</p>
-        <button ion-button clear item-end>Ver</button>
+    <ion-item (click)="getImageFrom('file')">
+      <ion-icon name="images" item-start></ion-icon>
+      {{ 'UPLOADIMAGE.SOURCE.FILE' | translate }}
+    </ion-item>
+    <ion-item (click)="getImageFrom('camera')">
+      <ion-icon name="camera" item-start></ion-icon>
+      {{ 'UPLOADIMAGE.SOURCE.CAMERA' | translate }}
       </ion-item>
-    </ng-template>
   </ion-list>
 </ion-content>
